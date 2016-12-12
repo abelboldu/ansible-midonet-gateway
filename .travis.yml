@@ -2,14 +2,6 @@
 
 dist: 'trusty'
 
-env:
-  global:
-    - ANSIBLE_FORCE_COLOR: True
-    - ANSIBLE_LOG_PATH: './ansible.log'
-    - ANSIBLE_ROLES_PATH: '../'
-  playbook: test.yml
-  playbook: test_bgp.yml
-
 language: 'python'
 
 python:
@@ -17,7 +9,19 @@ python:
 
 sudo: 'required'
 
+env:
+    - PLAYBOOK: test.yml
+      ANSIBLE_FORCE_COLOR: True
+      ANSIBLE_LOG_PATH: './ansible.log'
+      ANSIBLE_ROLES_PATH: '../'
+    - PLAYBOOK: test_bgp.yml
+      ANSIBLE_FORCE_COLOR: True
+      ANSIBLE_LOG_PATH: './ansible.log'
+      ANSIBLE_ROLES_PATH: '../'
+
 install:
+  - 'sudo apt-get purge -y mysql-common mysql-server-5.6 mysql-server-core-5.6 mysql-client-5.6 mysql-client-core-5.6'
+  - 'sudo apt-get autoremove -y'
   # Install test requirements
   - 'pip install -r requirements-devel.txt'
   - |
@@ -30,13 +34,13 @@ script:
   - 'yamllint -c .yamllint.conf .'
 
   # Check syntax of role.
-  - 'ansible-playbook -i localhost, -c local tests/${playbook} --syntax-check'
+  - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --syntax-check'
 
   # Run role.
-  - 'ansible-playbook -i localhost, -c local tests/${playbook} --diff --verbose'
+  - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --diff --verbose'
 
   # Run role again to check idempotence failure.
-  - 'ansible-playbook -i localhost, -c local tests/${playbook} --diff --verbose'
+  - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --diff --verbose'
 
   # Detect idempotence failure.
   - 'tail -n 1 ansible.log | grep -Eq "changed=0 +unreachable=0 +failed=0"'
