@@ -54,6 +54,8 @@
       mysql_daemon: 'mariadb'
       mysql_log_error: '/var/log/mariadb/mariadb.log'
       mysql_syslog_tag: 'mariadb'
+      mysql_config_include_files:
+        - {src: user-my.cnf.j2, force: true}
       mysql_pid_file: '/var/run/mariadb/mariadb.pid'
       when: ansible_os_family == 'RedHat'
 
