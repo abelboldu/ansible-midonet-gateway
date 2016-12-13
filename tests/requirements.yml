@@ -7,8 +7,8 @@
   src: 'abelboldu.openstack-repo'
 
 - name: 'mysql'
-  src: 'geerlingguy.mysql'
-  version: '2.4.1'
+  src: 'https://github.com/abelboldu/ansible-role-mysql'
+  version: 'fix_my_cnf'
 
 - src: 'https://github.com/openstack-ansible-galaxy/rabbitmq.git'
 
