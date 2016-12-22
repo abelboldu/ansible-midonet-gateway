@@ -1,7 +1,10 @@
 ---
-- src: geerlingguy.java
-- src: abelboldu.midonet-repos
-- src: abelboldu.zookeeper
+- src: 'geerlingguy.java'
+
+- name: 'midonet-repo'
+  src: 'https://github.com/midonet/ansible-midonet-repo'
+
+- src: 'abelboldu.zookeeper'
 
 - name: 'openstack-repo'
   src: 'abelboldu.openstack-repo'

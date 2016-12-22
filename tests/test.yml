@@ -22,9 +22,9 @@
       java_packages:
         - java-1.8.0-openjdk
     - openstack-repo
-    - role: abelboldu.midonet-repos
-      midonet_version: current
-      openstack_version: mitaka
+    - role: midonet-repo
+      midonet_repo_midonet_version: current
+      midonet_repo_openstack_plugin_version: mitaka
     - role: rabbitmq
       rabbitmq_plugins:
         - 'rabbitmq_management'
@@ -38,11 +38,6 @@
       mysql_root_password: 'mysqlpassword'
       mysql_bind_address: 0.0.0.0
       mysql_innodb_file_per_table: 'innodb_file_per_table'
-      #mysql_daemon: 'mysql'
-      #mysql_log_error: '/var/log/mysql/error.log'
-      #mysql_pid_file: '/var/run/mysqld/mysqld.pid'
-      #mysql_config_include_files:
-      #  - src: user-my.cnf.j2
       mysql_packages:
         - mysql-client-5.6
         - mysql-server-5.6
