@@ -23,7 +23,7 @@
         - java-1.8.0-openjdk
     - openstack-repo
     - role: midonet-repo
-      midonet_repo_midonet_version: current
+      midonet_repo_midonet_version: 5.2
       midonet_repo_openstack_plugin_version: mitaka
     - role: rabbitmq
       rabbitmq_plugins:
