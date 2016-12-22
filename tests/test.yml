@@ -38,11 +38,11 @@
       mysql_root_password: 'mysqlpassword'
       mysql_bind_address: 0.0.0.0
       mysql_innodb_file_per_table: 'innodb_file_per_table'
-      mysql_daemon: 'mysql'
-      mysql_log_error: '/var/log/mysql/error.log'
-      mysql_pid_file: '/var/run/mysqld/mysqld.pid'
-      mysql_config_include_files:
-        - src: user-my.cnf.j2
+      #mysql_daemon: 'mysql'
+      #mysql_log_error: '/var/log/mysql/error.log'
+      #mysql_pid_file: '/var/run/mysqld/mysqld.pid'
+      #mysql_config_include_files:
+      #  - src: user-my.cnf.j2
       mysql_packages:
         - mysql-client-5.6
         - mysql-server-5.6
