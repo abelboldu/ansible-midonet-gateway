@@ -37,12 +37,16 @@ script:
   # Check syntax of role.
   - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --syntax-check'
 
+  # DEBUG
+  - 'ls -l /var/run/mysqld/'
+
   # Run role.
   - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --diff --verbose'
 
   # Run role again to check idempotence failure.
   - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --diff --verbose'
-
+  # DEBUG
+  - 'ls -l /var/run/mysqld/'
   # Detect idempotence failure.
   - 'tail -n 1 ansible.log | grep -Eq "changed=0 +unreachable=0 +failed=0"'
 
