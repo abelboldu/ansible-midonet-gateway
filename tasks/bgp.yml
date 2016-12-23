@@ -37,7 +37,7 @@
   command: midonet-cli -e router '{{ edge_router_id }}' route add src 0.0.0.0/0 dst '{{ midonet_gateway_uplink_network_cidr }}' port '{{ item }}' type normal
   with_items: '{{ edge_port_ids }}'
   when:
-    - not edge_port_ids | skipped
+    - edge_port_ids is defined
     - add_bgp_peers.changed
 
 - name: Grab BGP routes
