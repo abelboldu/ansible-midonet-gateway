@@ -58,7 +58,7 @@
 
     - role: openstack-neutron-controller
 
-    - role: abelboldu.zookeeper
+    - role: zookeeper
       zookeeper_hosts: '{{ inventory_hostname }}'
 
     - role: ansible-midonet-agent
