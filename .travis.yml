@@ -35,13 +35,13 @@ script:
   - 'yamllint -c .yamllint.conf .'
 
   # Check syntax of role.
-  - 'ansible-playbook -i tests/inventory, -c local tests/${PLAYBOOK} --syntax-check'
+  - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --syntax-check'
 
   # Run role.
-  - 'ansible-playbook -i tests/inventory, -c local tests/${PLAYBOOK} --diff --verbose'
+  - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --diff --verbose'
 
   # Run role again to check idempotence failure.
-  - 'ansible-playbook -i tests/inventory, -c local tests/${PLAYBOOK} --diff --verbose'
+  - 'ansible-playbook -i localhost, -c local tests/${PLAYBOOK} --diff --verbose'
 
     # Detect idempotence failure.
   - 'tail -n 1 ansible.log | grep -Eq "changed=0 +unreachable=0 +failed=0"'
